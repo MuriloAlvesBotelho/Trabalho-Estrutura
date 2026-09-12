@@ -1,8 +1,11 @@
-# Dedicatoria
-Trabalho de Estrutura de dados feito pelos alunos:
+# Trabalho de Estrutura de dados
+
+feito pelos alunos:
 
 Murilo Alves Botelho
+
 Gustavo Nogueira 
+
 Isaac Ferreira Santos
 
 # O que e Notação Big-O?
@@ -11,7 +14,9 @@ A Notacao Big-O e uma ferramenta matematica de analise assintotica usada para es
 
 As 7 principais classes de complexidade sao:  
 
-O(1) - Tempo Constante: O tempo de execucao nao depende da quantidade de dados. Seja com 10 ou 1.000.000 de itens, o custo operacional e fixo, como ao acessar o primeiro no pelo ponteiro de inicio.>
+O(1) - Tempo Constante: O tempo de execucao nao depende da quantidade de dados. Seja com 10 ou 1.000.000 de itens, o custo operacional e fixo, como ao acessar o primeiro no pelo ponteiro de inicio.
+
+O(1) - Tempo Constante: O tempo de execucao nao depende da quantidade de dados. Seja com 10 ou 1.000.000 de itens, o custo operacional e fixo, como ao acessar o primeiro no pelo ponteiro de inicio.  
 
 O(log n) - Logaritmica: O algoritmo reduz o espaco de busca pela metade a cada passo atraves de uma condicao, como em uma busca binaria.  
 
@@ -48,6 +53,7 @@ O(1) - Constante: E a classe ideal. O numero de operacoes necessarias para concl
 O(log n) - Logaritmica: Segunda mais eficiente. A cada etapa, o algoritmo reduz o espaco de busca por uma razao constante (geralmente a metade). Enquanto a entrada n cresce de forma exponencial, o tempo computacional cresce de maneira estritamente linear. Para um milhao de itens, necessita de apenas cerca de 20 operacoes fundamentais.  
 
 O(n) - Linear: Representa algoritmos onde cada elemento do conjunto deve ser inspecionado pelo menos uma vez. Existe uma relacao estrita de proporcionalidade direta: dobrar o volume de produtos dobra o tempo de execucao. E a classe minima aceitavel para buscas em estruturas lineares nao ordenadas.  
+
 O(n log n) - Linearitmica: E a menor complexidade possivel para algoritmos de ordenacao baseados em comparacao direta entre chaves no pior caso (como MergeSort). Ela surge quando dividimos recursivamente o problema em niveis logaritmicos e realizamos uma varredura linear de n elementos para recombinar as partes.  
 
 O(n^2) - Quadratica: Marca o inicio dos algoritmos ineficientes para grandes massas de dados. Geralmente resulta de lacos de repeticao aninhados, onde para cada elemento avaliado e necessario percorrer todos os demais. Enquanto 1.000 itens requerem 1.000.000 de passos, 10.000 itens escalam para 100.000.000 de operacoes, tornando o processamento custoso.  
