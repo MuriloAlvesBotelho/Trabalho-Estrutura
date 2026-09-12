@@ -1,0 +1,18 @@
+# Artefatos de compilacao C
+*.o
+Codigo/estoque
+
+# Arquivos temporarios de editores
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Arquivos gerados pelo sistema operacional
+.DS_Store
+Thumbs.db
+
+# Dumps de memoria
+core
+core.*

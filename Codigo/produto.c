@@ -1,39 +1,82 @@
 #include "produto.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void menubase(){
-    printf("1. Inserir no início\n"); 
-    printf("2. Inserir no fim.\n");
-    printf("3. Remover do início\n");
-    printf("4. Remover do fim.\n");
-    printf("5. Buscar produto por substring no nome (exibe todos que contêm).\n");
-    printf("6. Atualizar quantidade de um produto (por ID).\n");
-    printf("7. Exibir todos os produtos (ID, nome, quantidade, preço).\n");
-    printf("8. Exibir reverso (apenas para a lista dupla).\n");
-    printf("9. Contar quantos produtos há na lista.\n");
-    printf("10. Esvaziar completamente a lista (liberar memória).\n");
-    printf("0. sair do menu de perecíveis.\n>>");
+void ler_linha(const char *mensagem, char *destino, int tamanho)
+{
+    int caractere;
+    do {
+        printf("%s", mensagem);
+        if (fgets(destino, tamanho, stdin) == NULL) { destino[0] = '\0'; return; }
+        if (strchr(destino, '\n') == NULL) while ((caractere = getchar()) != '\n' && caractere != EOF) {}
+        destino[strcspn(destino, "\n")] = '\0';
+        if (destino[0] == '\0') printf("O valor nao pode ficar vazio.\n");
+    } while (destino[0] == '\0');
 }
 
-int menuPerecivel(){
-    printf("===== GERENCIAR PERECÍVEIS =====\n");
-    menubase();
-    int escolha;
-    scanf("%d",&escolha);
-    return escolha; 
+int ler_inteiro(const char *mensagem)
+{
+    char linha[64], *fim; long valor;
+    for (;;) {
+        printf("%s", mensagem);
+        if (fgets(linha, sizeof(linha), stdin) == NULL) return 0;
+        valor = strtol(linha, &fim, 10);
+        while (*fim == ' ' || *fim == '\t') fim++;
+        if (fim != linha && (*fim == '\n' || *fim == '\0')) return (int)valor;
+        printf("Digite um numero inteiro valido.\n");
+    }
 }
 
-int menuNaoPerecivel(){
-    printf("===== GERENCIAR NÃO PERECÍVEIS =====\n");
-    menubase();
-    int escolha;
-    scanf("%d",&escolha);
-    return escolha;
+float ler_float(const char *mensagem)
+{
+    char linha[64], *fim; float valor;
+    for (;;) {
+        printf("%s", mensagem);
+        if (fgets(linha, sizeof(linha), stdin) == NULL) return 0.0f;
+        valor = strtof(linha, &fim);
+        while (*fim == ' ' || *fim == '\t') fim++;
+        if (fim != linha && (*fim == '\n' || *fim == '\0') && valor >= 0.0f) return valor;
+        printf("Digite um preco valido (maior ou igual a zero).\n");
+    }
 }
 
-int menuPromocoes(){
-    printf("===== GERENCIAR PROMOÇÕES =====\n");
-    menubase();
-    int escolha;
-    scanf("%d",&escolha);
-    return escolha;
+Produto produto_ler(void)
+{
+    Produto produto;
+    produto.id = ler_inteiro("ID: ");
+    ler_linha("Nome: ", produto.nome, TAM_NOME);
+    do { produto.quantidade = ler_inteiro("Quantidade: "); if (produto.quantidade < 0) printf("A quantidade nao pode ser negativa.\n"); } while (produto.quantidade < 0);
+    produto.preco = ler_float("Preco: ");
+    printf("Validade (AAAA-MM-DD, opcional): ");
+    {
+        char validade_linha[64];
+        if (fgets(validade_linha, sizeof(validade_linha), stdin) == NULL) {
+            produto.validade[0] = '\0';
+        } else {
+            if (strchr(validade_linha, '\n') == NULL) {
+                int caractere;
+                while ((caractere = getchar()) != '\n' && caractere != EOF) {
+                }
+            }
+            validade_linha[strcspn(validade_linha, "\n")] = '\0';
+            strncpy(produto.validade, validade_linha, TAM_VALIDADE - 1);
+            produto.validade[TAM_VALIDADE - 1] = '\0';
+        }
+    }
+    return produto;
+}
+
+void produto_exibir(const Produto *produto)
+{
+    printf("ID: %d | Nome: %s | Quantidade: %d | Preco: R$ %.2f", produto->id, produto->nome, produto->quantidade, produto->preco);
+    if (produto->validade[0] != '\0') printf(" | Validade: %s", produto->validade);
+    printf("\n");
+}
+
+int produto_atualizar_quantidade(Produto *produto, int quantidade)
+{
+    if (quantidade < 0) return 0;
+    produto->quantidade = quantidade;
+    return 1;
 }
