@@ -1,3 +1,5 @@
+#include "produto.h"
+
 void menubase(){
     printf("1. Inserir no início\n"); 
     printf("2. Inserir no fim.\n");
