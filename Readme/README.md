@@ -4,7 +4,6 @@ Trabalho de Estrutura de dados feito pelos alunos:
 Murilo Alves Botelho
 Gustavo Nogueira 
 Isaac Ferreira Santos
-=======================
 
 # O que e Notação Big-O?
 
