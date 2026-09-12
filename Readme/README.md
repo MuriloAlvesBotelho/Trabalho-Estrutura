@@ -12,7 +12,7 @@ A Notacao Big-O e uma ferramenta matematica de analise assintotica usada para es
 
 As 7 principais classes de complexidade sao:  
 
-<O(1) - Tempo Constante: O tempo de execucao nao depende da quantidade de dados. Seja com 10 ou 1.000.000 de itens, o custo operacional e fixo, como ao acessar o primeiro no pelo ponteiro de inicio.  
+<O(1) - Tempo Constante: O tempo de execucao nao depende da quantidade de dados. Seja com 10 ou 1.000.000 de itens, o custo operacional e fixo, como ao acessar o primeiro no pelo ponteiro de inicio.>
 
 <O(log n) - Logaritmica: O algoritmo reduz o espaco de busca pela metade a cada passo atraves de uma condicao, como em uma busca binaria.  
 
