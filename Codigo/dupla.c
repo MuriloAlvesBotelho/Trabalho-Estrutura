@@ -21,15 +21,20 @@ static int inserir(ListaDupla *lista, Produto produto, int no_fim){
 		lista->fim->proximo = novo; 
 		lista->fim = novo; 
 	}
-	else { novo->proximo = lista->inicio; lista->inicio->anterior = novo; lista->inicio = novo; }
+	else { 
+		novo->proximo = lista->inicio; 
+		lista->inicio->anterior = novo; 
+		lista->inicio = novo; 
+	}
 	return LISTA_OK;
 }
 int dupla_inserir_inicio(ListaDupla *lista, Produto produto) { return inserir(lista, produto, 0); }
 int dupla_inserir_fim(ListaDupla *lista, Produto produto) { return inserir(lista, produto, 1); }
-int dupla_remover_inicio(ListaDupla *lista, Produto *removido)
-{
-	NoDupla *no; if (lista->inicio == NULL) return LISTA_VAZIA;
-	no = lista->inicio; lista->inicio = no->proximo;
+int dupla_remover_inicio(ListaDupla *lista, Produto *removido){
+	NoDupla *no; 
+	if (lista->inicio == NULL) return LISTA_VAZIA;
+	no = lista->inicio; 
+	lista->inicio = no->proximo;
 	if (lista->inicio) lista->inicio->anterior = NULL; else lista->fim = NULL;
 	if (removido) *removido = no->produto;
 	free(no);
@@ -40,7 +45,9 @@ int dupla_remover_fim(ListaDupla *lista, Produto *removido)
 	NoDupla *no; if (lista->fim == NULL) return LISTA_VAZIA;
 	no = lista->fim; lista->fim = no->anterior;
 	if (lista->fim) lista->fim->proximo = NULL; else lista->inicio = NULL;
-	if (removido) *removido = no->produto;
+	if (removido != NULL) {
+    	*removido = no->produto;
+	}
 	free(no);
 	return LISTA_OK;
 }
