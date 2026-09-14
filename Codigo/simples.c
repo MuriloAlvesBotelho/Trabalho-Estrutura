@@ -2,17 +2,35 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct NoSimples { Produto produto; NoSimples *proximo; };
-void simples_inicializar(ListaSimples *lista) { lista->inicio = NULL; }
+struct NoSimples { 
+    Produto produto;
+    NoSimples *proximo; 
+};
+
+void simples_inicializar(ListaSimples *lista) { 
+    lista->inicio = NULL; 
+}
 
 static int inserir(ListaSimples *lista, Produto produto, int no_fim)
 {
-    NoSimples *novo = malloc(sizeof(*novo)); NoSimples *atual;
+    NoSimples *novo = malloc(sizeof(*novo)); 
+    NoSimples *atual;
     if (novo == NULL) return LISTA_ERRO_ALOCACAO;
-    novo->produto = produto; novo->proximo = NULL;
-    if (!no_fim) { novo->proximo = lista->inicio; lista->inicio = novo; return LISTA_OK; }
-    if (lista->inicio == NULL) { lista->inicio = novo; return LISTA_OK; }
-    atual = lista->inicio; while (atual->proximo != NULL) atual = atual->proximo;
+    novo->produto = produto; 
+    novo->proximo = NULL;
+    if (no_fim==0) { 
+        novo->proximo = lista->inicio; 
+        lista->inicio = novo; 
+        return LISTA_OK; 
+    }
+    if (lista->inicio == NULL) { 
+        lista->inicio = novo; 
+        return LISTA_OK;    
+    }
+    atual = lista->inicio; 
+    while (atual->proximo != NULL) {
+        atual = atual->proximo;
+    }
     atual->proximo = novo; return LISTA_OK;
 }
 int simples_inserir_inicio(ListaSimples *lista, Produto produto) { return inserir(lista, produto, 0); }

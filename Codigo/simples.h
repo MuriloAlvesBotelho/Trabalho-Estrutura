@@ -2,7 +2,11 @@
 #define SIMPLES_H
 #include "produto.h"
 typedef struct NoSimples NoSimples;
-typedef struct { NoSimples *inicio; } ListaSimples;
+
+typedef struct { 
+    NoSimples *inicio; 
+}ListaSimples;
+
 void simples_inicializar(ListaSimples *lista);
 int simples_inserir_inicio(ListaSimples *lista, Produto produto);
 int simples_inserir_fim(ListaSimples *lista, Produto produto);

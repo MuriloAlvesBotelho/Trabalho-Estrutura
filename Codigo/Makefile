@@ -1,13 +1,19 @@
-CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -O2
-OBJETOS = main.o produto.o simples.o dupla.o circular.o
+CC = gcc
+CFLAGS = -std=c99 -Wall -Wextra -pedantic
+TARGET = estoque.exe
+SRCS = main.c produto.c simples.c dupla.c circular.c
+OBJS = $(SRCS:.c=.o)
 
-estoque: $(OBJETOS)
-	$(CC) $(CFLAGS) -o $@ $(OBJETOS)
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(OBJS) -o $(TARGET)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -f $(OBJETOS) estoque
+run: $(TARGET)
+	./$(TARGET)
 
-.PHONY: clean
+clean:
+	del /f /q *.o $(TARGET)

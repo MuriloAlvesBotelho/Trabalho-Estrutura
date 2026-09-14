@@ -14,16 +14,22 @@ Cada produto possui ID, nome, quantidade, preco e validade opcional. Todos os mo
 
 No diretorio `Codigo`, execute:
 
-```sh
+No Windows:
+
+Compilar o projeto:
+mingw32-make
+Executar o programa:
+mingw32-make run
+
+No Linux:
+Compilar o projeto:
 make
-./estoque
-```
+Executar o programa:
+make run
 
 Para remover os arquivos gerados:
 
-```sh
 make clean
-```
 
 O programa rejeita entradas numericas invalidas, IDs repetidos dentro da lista selecionada, quantidades negativas e informa lista vazia, produto inexistente e falha de alocacao.
 
@@ -44,8 +50,6 @@ Isaac Ferreira Santos
 A Notacao Big-O e uma ferramenta matematica de analise assintotica usada para estimar a eficiencia de algoritmos em termos de tempo de execucao e consumo de memoria a medida que o volume de dados cresce. Em vez de medir o tempo em segundos, que varia conforme o hardware, ela mensura o crescimento do numero de operacoes logicas em funcao do tamanho da entrada n. A letra O vem de Order of, ou ordem de grandeza, indicando um teto assintotico ou limite superior para o pior caso da aplicacao.
 
 As 7 principais classes de complexidade sao:
-
-O(1) - Tempo Constante: O tempo de execucao nao depende da quantidade de dados. Seja com 10 ou 1.000.000 de itens, o custo operacional e fixo, como ao acessar o primeiro no pelo ponteiro de inicio.
 
 O(1) - Tempo Constante: O tempo de execucao nao depende da quantidade de dados. Seja com 10 ou 1.000.000 de itens, o custo operacional e fixo, como ao acessar o primeiro no pelo ponteiro de inicio.
 
